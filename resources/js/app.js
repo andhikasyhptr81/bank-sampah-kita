@@ -1,3 +1,4 @@
+// resources/js/app.js
 import '../css/app.css';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -6,8 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (hamburger && navLinks) {
         hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
+            navLinks.classList.toggle('open');
         });
     }
 });
