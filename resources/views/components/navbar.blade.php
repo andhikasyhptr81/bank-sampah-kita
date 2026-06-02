@@ -14,10 +14,12 @@
         </a>
 
         <ul class="nav-links">
+            <li><a href="/" class="nav-link">Beranda</a></li>
             <li><a href="/tentang" class="nav-link">Tentang</a></li>
             <li><a href="/program" class="nav-link">Program</a></li>
             <li><a href="/layanan" class="nav-link">Layanan</a></li>
-            <li><a href="/dampak" class="nav-link">Dampak</a></li>
+            <li><a href="/galeri" class="nav-link">Galeri</a></li>
+            <li><a href="/berita" class="nav-link">Berita</a></li>
             <li><a href="/kontak" class="nav-link">Kontak</a></li>
         </ul>
 

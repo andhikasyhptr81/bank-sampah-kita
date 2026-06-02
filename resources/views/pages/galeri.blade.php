@@ -1,189 +1,128 @@
 @extends('layouts.app')
-@section('title', 'Tentang Kami — Bank Sampah Kita')
+
+@section('title', 'Galeri Kegiatan — Bank Sampah Kita')
 
 @section('content')
 
-{{-- ── PAGE HERO ── --}}
 <section class="page-hero">
     <div class="container">
         <p class="breadcrumb">
-            <a href="{{ route('home') }}">Beranda</a> › Tentang Kami
+            <a href="{{ route('home') }}">Beranda</a> › Galeri
         </p>
-        <h1 class="page-hero-title">Tentang kami</h1>
-        <p class="page-hero-desc">Mengenal lebih dekat Bank Sampah Kita — siapa kami, mengapa kami ada, dan apa yang
-            mendorong kami terus bergerak untuk lingkungan yang lebih baik.</p>
+
+        <h1 class="page-hero-title">
+            Galeri kegiatan
+        </h1>
+
+        <p class="page-hero-desc">
+            Dokumentasi berbagai kegiatan Bank Sampah Kita bersama warga dalam menjaga lingkungan yang bersih dan sehat.
+        </p>
     </div>
 </section>
 
-{{-- ── SEJARAH ── --}}
 <section class="inner-section">
     <div class="container">
-        <p class="section-tag">Sejarah</p>
-        <h2 class="section-title text-dark">Bermula dari kepedulian warga</h2>
 
-        <div class="two-col-grid" style="margin-top: 28px;">
-            <div class="img-placeholder">
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#3dab87" stroke-width="1.5">
-                    <rect x="3" y="3" width="18" height="18" rx="2" />
-                    <circle cx="8.5" cy="8.5" r="1.5" />
-                    <polyline points="21 15 16 10 5 21" />
-                </svg>
-                <span>Foto rapat warga perdana<br>April 2022</span>
-            </div>
-            <div class="story-text">
-                <p>Bank Sampah Kita lahir pada April 2022 dari keresahan sekelompok ibu rumah tangga di Kelurahan Maju
-                    Bersama yang prihatin dengan volume sampah yang terus meningkat setiap minggunya.</p>
-                <p style="margin-top: 14px;">Dimulai dengan 12 nasabah dan satu timbangan manual, kini kami telah
-                    berkembang menjadi bank sampah dengan lebih dari 340 nasabah aktif dan sistem pencatatan digital.
-                </p>
-                <p style="margin-top: 14px;">Perjalanan tiga tahun ini membuktikan bahwa perubahan nyata bisa dimulai
-                    dari langkah kecil di tingkat RT/RW.</p>
-            </div>
-        </div>
-    </div>
-</section>
+        <div class="gallery-grid">
+            @foreach($galeri as $item)
+            <div class="gallery-card">
 
-{{-- ── VISI MISI ── --}}
-<section class="inner-section bg-cream">
-    <div class="container">
-        <p class="section-tag">Arah & Tujuan</p>
-        <h2 class="section-title text-dark">Visi & misi</h2>
-
-        <div class="vm-grid" style="margin-top: 28px;">
-            <div class="vm-card vm-card--visi">
-                <div class="vm-icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3dab87" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <circle cx="12" cy="12" r="3" />
-                    </svg>
-                </div>
-                <h3 class="vm-title">Visi</h3>
-                <p class="vm-text">"Menjadi bank sampah percontohan di Jakarta Selatan yang memberdayakan warga dan
-                    menjaga kebersihan lingkungan secara berkelanjutan pada 2027."</p>
-            </div>
-            <div class="vm-card">
-                <div class="vm-icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3dab87" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <polyline points="12 8 12 12 14 14" />
-                    </svg>
-                </div>
-                <h3 class="vm-title">Misi</h3>
-                <ul class="misi-list">
-                    @foreach($misi as $m)
-                    <li>
-                        <span class="misi-check">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#3dab87"
-                                stroke-width="3">
-                                <polyline points="20 6 9 17 4 12" />
-                            </svg>
-                        </span>
-                        {{ $m }}
-                    </li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-{{-- ── STRUKTUR ORGANISASI ── --}}
-<section class="inner-section">
-    <div class="container">
-        <p class="section-tag">Tim</p>
-        <h2 class="section-title text-dark">Struktur organisasi</h2>
-        <p class="section-sub text-muted">Dikelola oleh warga, untuk warga</p>
-
-        <div class="team-grid">
-            @foreach($pengurus as $p)
-            <div class="team-card">
-                <div class="team-avatar">{{ $p['inisial'] }}</div>
-                <div class="team-nama">{{ $p['nama'] }}</div>
-                <div class="team-jabatan">{{ $p['jabatan'] }}</div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-
-{{-- ── WILAYAH CAKUPAN ── --}}
-<section class="inner-section bg-cream">
-    <div class="container">
-        <p class="section-tag">Wilayah</p>
-        <h2 class="section-title text-dark">Area cakupan layanan</h2>
-        <p class="section-sub text-muted">Saat ini melayani 3 RW di Kelurahan Maju Bersama</p>
-
-        <div class="two-col-grid" style="margin-top: 28px; align-items: start;">
-            <div class="map-placeholder">
-                <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="350" style="border:0;"
-                    allowfullscreen="" loading="lazy">
-                </iframe>
-                <span>Peta wilayah layanan</span>
-                <small>Embed Google Maps</small>
-            </div>
-            <div class="lokasi-list">
-                @foreach($lokasi as $i => $l)
-                <div class="lokasi-item">
-                    <div class="lokasi-num">{{ $i + 1 }}</div>
-                    <div>
-                        <div class="lokasi-nama">{{ $l['nama'] }}</div>
-                        <div class="lokasi-detail">{{ $l['detail'] }}</div>
+                <div class="gallery-image">
+                    <div class="gallery-placeholder">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#3dab87" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <circle cx="8.5" cy="8.5" r="1.5" />
+                            <polyline points="21 15 16 10 5 21" />
+                        </svg>
                     </div>
                 </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-</section>
 
-{{-- ── PENGHARGAAN ── --}}
-<section class="inner-section">
-    <div class="container">
-        <p class="section-tag">Pencapaian</p>
-        <h2 class="section-title text-dark">Penghargaan & pengakuan</h2>
-        <p class="section-sub text-muted">Apresiasi dari berbagai pihak atas kontribusi lingkungan kami</p>
+                <div class="gallery-body">
+                    <span class="gallery-category">
+                        {{ $item['kategori'] }}
+                    </span>
 
-        <div class="award-grid">
-            @foreach($penghargaan as $p)
-            <div class="award-card">
-                <div class="award-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e8b84b" stroke-width="2">
-                        <polygon
-                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                    </svg>
+                    <h3 class="gallery-title">
+                        {{ $item['judul'] }}
+                    </h3>
                 </div>
-                <div>
-                    <div class="award-judul">{{ $p['judul'] }}</div>
-                    <div class="award-dari">{{ $p['dari'] }}</div>
-                </div>
+
             </div>
             @endforeach
         </div>
-    </div>
-</section>
 
-{{-- ── CTA STRIP ── --}}
-<section class="cta-strip">
-    <div class="container">
-        <div class="cta-strip-inner">
-            <div>
-                <h3 class="cta-strip-title">Tertarik bergabung atau bermitra?</h3>
-                <p class="cta-strip-sub">Kami terbuka untuk nasabah baru, relawan, dan mitra pengepul</p>
-            </div>
-            <a href="{{ route('kontak') }}" class="btn btn-cta-outline">
-                Hubungi kami
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="9 18 15 12 9 6" />
-                </svg>
-            </a>
-        </div>
     </div>
 </section>
 
 @endsection
 
+
 @push('styles')
 <style>
+    .page-hero {
+        background: var(--green-pale);
+        padding: 48px 0;
+    }
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .gallery-card {
+        background: #fff;
+        border: 1px solid #e5ebe8;
+        border-radius: 14px;
+        overflow: hidden;
+        transition: .3s;
+    }
+
+    .gallery-card:hover {
+        transform: translateY(-4px);
+    }
+
+    .gallery-image img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+    }
+
+    .gallery-body {
+        padding: 18px;
+    }
+
+    .gallery-category {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 20px;
+        background: #eef8f4;
+        color: #3dab87;
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+
+    .gallery-title {
+        font-size: 15px;
+        font-weight: 600;
+        color: #222;
+    }
+
+    @media(max-width:768px) {
+        .gallery-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .gallery-placeholder {
+        height: 220px;
+        background: #eef8f4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
     /* Page Hero */
     .page-hero {
         background: var(--green-pale);
